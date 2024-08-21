@@ -31,7 +31,7 @@ export default function CreateEventForm() {
         };
 
         if (!window.google) {
-            loadScript(`https://maps.googleapis.com/maps/api/js?key=AIzaSyDXi9nE7v391ZwDp1tdJEyW6FQhWRvpDQc&libraries=places`, initializeAutocomplete);
+            loadScript(`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`, initializeAutocomplete);
         } else {
             initializeAutocomplete();
         }
