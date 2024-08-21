@@ -1,3 +1,3 @@
 # Carpool Manager Website
 
-[Demo video](demo/demo.mp4)
+<video src="(demo/demo.mp4" width="300" />
