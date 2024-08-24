@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import axios from 'axios';
 
-const apiKey = 'AIzaSyB_2lKJ738zeFU0wyXZvgpn6euAItI1DHg';
+const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
 class KMeans {
     constructor(clusterCapacities, maxIterations = 100) {
@@ -138,7 +138,6 @@ const getCoordinates = async (locationName, apiKey) => {
     }
 };
 
-
 export default async function handler(request, response) {
     const id = request.query.id;
 
@@ -168,16 +167,6 @@ export default async function handler(request, response) {
         return acc;
     }, {});
 
-
-    console.log(driversDict)
-    // console.log(passengersDict)
-
-    const data = {
-        '3': [5.0, 8.0],
-        '2': [8.0, 8.0],
-        '45': [9.0, 3.0]
-    };
-    
     const kmeans = new KMeans(driversDict);
     kmeans.fit(passengersDict);
     const clusters = kmeans.getClusters();
@@ -188,7 +177,6 @@ export default async function handler(request, response) {
             const res = await sql`UPDATE passengers SET driver = ${driver} WHERE id = ${passenger}`;
         }
     }
-
 
     return response.status(200).json();
 }
