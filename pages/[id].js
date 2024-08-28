@@ -59,7 +59,7 @@ export default function EventRegistrationDetailsForm() {
         };
 
         if (!window.google) {
-            loadScript(`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&libraries=places`, initializeAutocomplete);
+            loadScript(`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`, initializeAutocomplete);
         } else {
             initializeAutocomplete();
         }
