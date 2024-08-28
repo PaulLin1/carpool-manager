@@ -47,17 +47,17 @@ class KMeans {
 
     assignClusters(passengers) {
         const clusters = {};
-        const clusterSizesLeft = { ...this.clusterCapacities };
+        const clusterCapacitiesLeft = { ...this.clusterCapacities };
 
         this.clusterIds.forEach(id => {
             clusters[id] = [];
         });
 
         Object.entries(passengers).forEach(([id, point]) => {
-            const closestCentroidId = this.getClosestCentroidId(point, clusterSizesLeft);
+            const closestCentroidId = this.getClosestCentroidId(point, clusterCapacitiesLeft);
             if (closestCentroidId !== -1) {
                 clusters[closestCentroidId].push(id);
-                clusterSizesLeft[closestCentroidId]--;
+                clusterCapacitiesLeft[closestCentroidId]--;
             }
         });
 
@@ -95,7 +95,7 @@ class KMeans {
 
     hasConverged(oldCentroids, newCentroids) {
         for (let i = 0; i < oldCentroids.length; i++) {
-            if (this.euclideanDistance(oldCentroids[i], newCentroids[i]) !== 0) {
+            if (oldCentroids[i] !== newCentroids[i]) {
                 return false;
             }
         }
