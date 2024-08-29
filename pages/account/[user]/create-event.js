@@ -30,13 +30,23 @@ export default function CreateEventForm() {
             }
         };
 
-        if (!window.google) {
-            loadScript(`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`, initializeAutocomplete);
-        } else {
-            initializeAutocomplete();
-        }
+        fetch("/api/get-google-key")
+            .then((response) => response.json())
+            .then((data) => {
+            if (!window.google) {
+                loadScript(
+                `https://maps.googleapis.com/maps/api/js?key=${data.key}&libraries=places`,
+                initializeAutocomplete
+                );
+            } else {
+                initializeAutocomplete();
+            }
+            })
+            .catch((error) => {
+            console.error("Error loading Google Maps script:", error);
+            });
     }, []);
-
+    
     const handleInputChangeName = (event) => {
         setName(event.target.value);
         setMessage("");

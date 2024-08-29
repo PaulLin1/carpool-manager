@@ -73,7 +73,7 @@ export default function EventRegistrationDetailsForm() {
             .catch((error) => {
             console.error("Error loading Google Maps script:", error);
             });
-        }, []);
+    }, []);
 
     const handleNameChange = (event) => {
         setName(event.target.value);

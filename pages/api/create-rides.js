@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import axios from 'axios';
 
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+const apiKey = process.env.GOOGLE_API_KEY;
 
 class KMeans {
     constructor(clusterCapacities, maxIterations = 100) {
