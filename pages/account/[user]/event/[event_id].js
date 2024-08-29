@@ -83,7 +83,7 @@ export default function EventPage() {
             <div className="bg-white grid grid-cols-7 mt-16 w-4/5 min-h-[30rem] border-y-8 border-white items-center">
                 <div className='col-span-2  text-black text-2xl p-5 pl-5'>
                     <h1 className='text-2xl'><b>Link</b></h1>
-                    <h1 className='ml-8 text-lg'>http://localhost:3000/{eventId}</h1>
+                    <h1 className='ml-8 text-lg'>https://vercel-postgres-carpool-manager.vercel.app/{eventId}</h1>
                     <h1 className='text-2xl'><b>Name</b></h1>
                     <h1 className='ml-8 text-lg'>{eventName}</h1>
                     <h1 className='text-2xl'><b>Date</b></h1>
